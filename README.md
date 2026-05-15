@@ -51,6 +51,7 @@ To guide the analytical process, this project addresses the following specific p
 
 ## Methodology - How we did it
 
-We defined one function for each need and each step of the cleaning process. Once we have them, we can retrieve each one of them to get easily the needed data. If we have it all cleaned, it can be done just by running all the fucntions.
+We defined one function for each need and each step of the cleaning process. Once we have them, we can retrieve each one of them to get easily the needed data. If we want it all cleaned, we can run the main function that contains all the cleaning sub-functions. This way we can clean a whole dataset with just running the main function.
 
-After cleaning, 
+After cleaning, the returned dataframe was used to run static functions to see more clearly the actual values and display the statistics - for a visual understanding.
+This visual data was imported to a presentation to provide clear and reliable information.
