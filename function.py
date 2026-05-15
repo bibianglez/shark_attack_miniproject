@@ -1,7 +1,3 @@
-import pandas as pd
-import seaborn as sns
-import matplotlib.pyplot as plt
-
 def rename_columns(df):
     """
     function N°1:
@@ -12,7 +8,7 @@ def rename_columns(df):
     df1.rename(columns={col : col.strip() for col in df1.columns}, inplace = True)
     df1.rename(columns={col : col.replace(" ", "_").lower() for col in df1.columns}, inplace = True)
     return df1
-
+####################################################################################################
 def delete_columns(df):
     """
     Function N°2
@@ -27,7 +23,7 @@ def delete_columns(df):
     df1.drop(cols_to_delete, axis = 1, inplace = True)
     
     return df1
-    
+# ###################################################################################################   
 def clean_fatal_col(df):
     """
     function N°3:
@@ -38,7 +34,7 @@ def clean_fatal_col(df):
     df1["Fatal Y/N"] = df1["Fatal Y/N"].apply(lambda x : "N" if (str(x).strip().lower()[0] == "n" and len(str(x).strip()) != 3) else ("Y" if str(x).strip().lower().startswith("y") else str(x).strip().lower()))
     
     return df1
-
+#######################################################################################################
 def clean_age_col(df):
     """
     function N°4:
@@ -61,13 +57,13 @@ def activity_col_anlaysis(df):
                "Diving" if "div" in str(x).lower() else "Other"))
                   
     return df1
-
+#################################################################################################################################
 def drop_rows(df):
 
     """
     This functions drops the irrelivant rows: 
     1: from column FATAL Y/N:
-    "nan"=561, "unknown": 71, "f": 5, "m": 3, "2017": 1 ==>641/4953(N)+1493(Y) =10%
+    "nan"=561, "unknown":71 , "f": 5, "m": 3, "2017": 1 ==>641/4953(N)+1493(Y) =10%
     
     """
     df1 = df.copy()
@@ -75,7 +71,7 @@ def drop_rows(df):
 
     return df1
 
-    
+###############################################################################################################    
 def main_clean_function(df):
     """
     input: a copy of df: shark attacks
@@ -105,17 +101,17 @@ def top_att_countries_table(df, top_n = 10):
         
     #top_n_countries = pd.DataFrame(df1.groupby(["country", "fatal_y/n"])["fatal_y/n"].count().nlargest(top_n))
     #top_n_countries =pd.DataFrame(df1.groupby("country")["fatal_y/n"].count().nlargest(top_n))
-    top_n_countries = df1.groupby(["country","fatal_y/n"])["fatal_y/n"].size().nlargest(10).reset_index(name = "count")
+    top_n_countries = df1.groupby(["country","fatal_y/n"])["fatal_y/n"].size().nlargest(10).reset_index(name = "count").sort_values(by="country")
 
     plt.show()
     return top_n_countries
-
+##############################################################################################################
     
 def top_att_countries_plot(df, top_n = 10):
     
     """
     returns a plot: nbr of attacke per country/5top
-    input DF
+    input: cleaned up dataframe
     Output: Returns the top 5 countries with the highest number of shark attacks,
     def plot_top_n_countires 
 
@@ -125,7 +121,7 @@ def top_att_countries_plot(df, top_n = 10):
     top_n_countries = df1.groupby("country")["fatal_y/n"].size().nlargest(10).reset_index(name = "count")
     
      #Plot settings:
-    plt.title('Shark Attacks by Country: Fatal vs Non-Fatal')
+    plt.title('Shark Attacks by Country: Fatal & Non-Fatal')
     plt.ylabel('Country')
     plt.xlabel('Number of Attacks')
     
@@ -141,12 +137,12 @@ def top_att_countries_plot(df, top_n = 10):
     plt.show()
     
     return attacks_by_country_plot
-    
+# ############################################################################################################################""  
 def attacks_per_year_plot(df, start_year = 2010):
     """
     Shows the variation of attacks over time. Drop empty rows for this exercise
 
-    input: df
+    input: cleaned up dataframe
     output: line chart
     """
     df1 = df.copy()
@@ -164,8 +160,13 @@ def attacks_per_year_plot(df, start_year = 2010):
     plt.show()
     
     return time_plot
-    
+################################################################################################################################    
 def activity_categories_plot(df):
+
+    """
+     input: cleaned up dataframe
+    
+    """
     df1 = df.copy()
     grouped = df1.groupby("activity_category")
     grouped_categories = grouped.size().reset_index(name = "count").sort_values(by="count", ascending = False)
@@ -187,9 +188,10 @@ def activity_categories_plot(df):
     plt.show()
     
     return cat_plot
-
+###############################################################################################################################
 def generating_plots(df, start_year = 2010, top_country = 10):
     """
+    input: cleaned up dataframe
     Gathers all the functions and execute them upon call in the following order:
     1. Generates the cleaned df
     2. Executes the plotting functions:  4 fucntions
@@ -218,4 +220,4 @@ def generating_plots(df, start_year = 2010, top_country = 10):
     print(f"{5*'*'}TYPE OF ACTIVITIES DURING THE ATTACKS {5*'*'}")
     plot4 = activity_categories_plot(df1)
     print(plot4)
- 
+    
