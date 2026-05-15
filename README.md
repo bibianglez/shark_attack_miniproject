@@ -1,4 +1,4 @@
-# Project Name - Shark Attacks miniproject
+# Shark Attacks miniproject
 
 **Summary**
     In this project we want to analyze all the available data on shark attacks around the world. This impacts the safety of everyone on the seas and beaches           around the world. Our purpose is to be able to find out where and what activities are statistically more dangerous to help prevent those encounters.
