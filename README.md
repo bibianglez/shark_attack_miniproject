@@ -55,3 +55,7 @@ We defined one function for each need and each step of the cleaning process. Onc
 
 After cleaning, the returned dataframe was used to run static functions to see more clearly the actual values and display the statistics - for a visual understanding.
 This visual data was imported to a presentation to provide clear and reliable information.
+
+
+
+Slides can be seen here: https://docs.google.com/presentation/d/1g4PqPgt2uUyTMsY4HGxluJsRHIVrVDmT/edit?usp=sharing&ouid=105416357653387057184&rtpof=true&sd=true
