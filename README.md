@@ -45,7 +45,7 @@ To guide the analytical process, this project addresses the following specific p
     * Dropped exact duplicate rows to prevent statistical bias.
     * Imputed missing 
 3.  **Data Type Conversion & Standardization:**
-    * Cleaned and stripped string formats (e.g., removing `$` and `,`)
+    * Cleaned and stripped string formats (e.g., removing `$` and `,` and white spaces)
     * Cast object types to explicit datetime or numerical formats using `pandas`
 
 
